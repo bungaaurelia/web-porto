@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+body {
+  font-family: 'Playfair Display', serif;
+}   
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+    filter: blur(2px);
+  }
+}
+
+.animate-sparkle {
+    position: relative;
+    animation: sparkle 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(255, 182, 193, 0.6)) blur(6px) brightness(1.1); /* soft pink glow */
+}
