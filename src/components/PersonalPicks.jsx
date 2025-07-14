@@ -2,23 +2,33 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-
 import { Navigation, Autoplay, EffectCoverflow } from "swiper/modules";
+import { createClient } from "@supabase/supabase-js";
+import React, { useEffect, useState } from "react";
 
-const picks = [
-  { title: "The Night Circus", type: "Novel", image: "/dummy1.png" },
-  { title: "Hotel Del Luna", type: "Drama", image: "/dummy2.png" },
-  { title: "Spirited Away", type: "Movie", image: "/dummy3.png" },
-  { title: "The Night Circus", type: "Novel", image: "/dummy1.png" },
-  { title: "Hotel Del Luna", type: "Drama", image: "/dummy2.png" },
-  { title: "Spirited Away", type: "Movie", image: "/dummy3.png" },
-  { title: "The Night Circus", type: "Novel", image: "/dummy4.png" },
-  { title: "Hotel Del Luna", type: "Drama", image: "/dummy5.png" },
-  { title: "Spirited Away", type: "Movie", image: "/dummy6.png" },
-  { title: "Spirited Away", type: "Movie", image: "/dummy7.png" },
-];
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 const PersonalPicks = () => {
+  const [picks, setPicks] = useState([]);
+
+  useEffect(() => {
+    const fetchPicks = async () => {
+      const { data, error } = await supabase.from("personal_picks").select("*");
+
+      console.log("Fetched personal picks:", data);
+      if (error) {
+        console.error("Supabase error:", error);
+      } else if (data) {
+        setPicks(data);
+      }
+    };
+
+    fetchPicks();
+  }, []);
+
   return (
     <section className="w-full py-10 px-4 sm:px-2 flex flex-col items-center">
       <div className="relative flex flex-col bg-white/10 rounded-tr-2xl rounded-br-2xl rounded-bl-2xl rounded-tl-none p-6 md:p-10 px-4 md:px-16 max-w-8xl w-full text-softPearl shadow-lg">
@@ -35,54 +45,71 @@ const PersonalPicks = () => {
         </div>
         <p
           className="text-softPearl text-lg md:text-xl italic text-center mb-6"
-          style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.125rem" }}
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "1.125rem",
+          }}
         >
-        Here are some of my personal favorites, each a little piece of me ✧
+          Here are some of my personal favorites, each a little piece of me ✧
         </p>
 
         {/* Swiper goes here */}
-        <div className="w-full flex justify-center mt-4 mb-6">
-          <Swiper
-            effect="coverflow"
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={3}
-            loop={true}
-            autoplay={{ delay: 3000 }}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 100,
-              modifier: 2.5,
-              slideShadows: true,
-            }}
-            modules={[EffectCoverflow, Autoplay, Navigation]}
-            className="w-full max-w-[95%] py-10"
-          >
-            {picks.map((item, idx) => (
-              <SwiperSlide
-                key={idx}
-                className="w-[390px] h-[420px] bg-white/10 rounded-2xl overflow-hidden shadow-lg text-softPearl flex flex-col items-center justify-center"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-80 object-cover rounded-t-2xl"
-                />
-                <div className="p-4 text-center space-y-2">
-                  <h3
-                    className="text-xl font-bold"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-sm italic font-light">{item.type}</p>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <div className="w-full mt-4 mb-6 flex justify-center">
+          <div className="w-full max-w-[95%]">
+            <Swiper
+              key={picks.length}
+              effect="coverflow"
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView="auto"
+              loop={true}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+                slideShadows: true,
+              }}
+              observer={true}
+              observeParents={true}
+              preloadImages={true}
+              watchSlidesProgress={true}
+              initialSlide={0}
+              onInit={(swiper) => {
+                setTimeout(() => {
+                  swiper.update();
+                }, 100);
+              }}
+              modules={[EffectCoverflow, Autoplay, Navigation]}
+              className="w-full max-w-[95%] py-10"
+            >
+              {picks.map((item) => (
+                <SwiperSlide
+                  key={item.id}
+                  style={{ width: "320px" }}
+                  className="h-[420px] bg-white/10 rounded-2xl overflow-hidden shadow-lg text-softPearl flex flex-col items-center justify-center"
+                >
+                  <img
+                    src={item.image_url}
+                    alt={item.title}
+                    className="w-full h-80 object-cover rounded-t-2xl"
+                  />
+                  <div className="p-4 text-center space-y-2">
+                    <h3
+                      className="text-xl font-bold"
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-sm italic font-light">{item.type}</p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
-      <br />
+        <br />
 
         <iframe
           style={{ borderRadius: "12px" }}

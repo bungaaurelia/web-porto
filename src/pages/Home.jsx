@@ -21,11 +21,11 @@ export default function Home() {
   }, []);
 
   const lineBreaks = [
-    <div className="my-2 flex flex-col items-center">
+    <div key="linebreak-1" className="my-2 flex flex-col items-center">
       <div className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       <div className="text-2xl text-softLilac/60 mt-2 mb-2">❀❀❀⁠</div>
       <div className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-    </div>
+    </div>,
   ];
 
   return (
