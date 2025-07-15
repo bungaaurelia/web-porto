@@ -21,20 +21,18 @@ export default function Home() {
   }, []);
 
   const lineBreaks = [
-    <div key="linebreak-1" className="my-2 flex flex-col items-center">
-      <div className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <div className="text-2xl text-softLilac/60 mt-2 mb-2">❀❀❀⁠</div>
+    <div key="linebreak-1" className="my-2 flex flex-col items-center py-4">
       <div className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-white/20 to-transparent" />
     </div>,
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-obsidianBlack">
+    <div className="flex flex-col min-h-screen bg-darkGreen">
       <main className="flex-grow">
         <Jumbotron />
         <SectionButtons />
 
-        <div className="flex flex-col md:flex-row bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-10 max-w-[1425px] w-full text-softPearl shadow-lg mx-auto mt-8 mb-10">
+        <div className="flex flex-col md:flex-rowp-6 md:p-10 max-w-[1425px] w-full text-pureWhite mx-auto mt-8 mb-10">
           <div className="w-full">
             <GlimpseOfMe />
             {lineBreaks}

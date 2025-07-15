@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+@import url(https://db.onlinewebfonts.com/c/4b54e79b4018658dba494de2ff5d6b3c?family=Inter);
 
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Inter';
 }   
 
 @keyframes sparkle {

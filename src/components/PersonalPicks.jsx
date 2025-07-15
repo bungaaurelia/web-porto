@@ -31,12 +31,12 @@ const PersonalPicks = () => {
 
   return (
     <section className="w-full py-10 px-4 sm:px-2 flex flex-col items-center">
-      <div className="relative flex flex-col bg-white/10 rounded-tr-2xl rounded-br-2xl rounded-bl-2xl rounded-tl-none p-6 md:p-10 px-4 md:px-16 max-w-8xl w-full text-softPearl shadow-lg">
+      <div className="relative flex flex-col bg-gradient-to-b from-white/15 via-white/0 to-transparent rounded-tr-2xl rounded-br-2xl rounded-bl-2xl rounded-tl-none p-6 md:p-10 px-4 md:px-16 max-w-8xl w-full text-pureWhite shadow-lg">
         <div className="absolute -top-10 -left-0 z-20">
-          <div className="relative w-60 h-10 bg-gradient-to-r from-dustyRed to-crimsonDepth text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
+          <div className="relative w-60 h-10 bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-semibold"
-              style={{ fontFamily: "'Quintessential', serif" }}
+              style={{ fontFamily: "Futuristic Armour" }}
             >
               Personal Picks
             </p>
@@ -44,9 +44,9 @@ const PersonalPicks = () => {
           </div>
         </div>
         <p
-          className="text-softPearl text-lg md:text-xl italic text-center mb-6"
+          className="text-pureWhite text-lg md:text-xl text-center mb-6"
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "Inter",
             fontSize: "1.125rem",
           }}
         >
@@ -88,7 +88,7 @@ const PersonalPicks = () => {
                 <SwiperSlide
                   key={item.id}
                   style={{ width: "320px" }}
-                  className="h-[420px] bg-white/10 rounded-2xl overflow-hidden shadow-lg text-softPearl flex flex-col items-center justify-center"
+                  className="h-[420px] bg-white/10 rounded-2xl overflow-hidden shadow-lg text-pureWhite flex flex-col items-center justify-center"
                 >
                   <img
                     src={item.image_url}
@@ -98,7 +98,7 @@ const PersonalPicks = () => {
                   <div className="p-4 text-center space-y-2">
                     <h3
                       className="text-xl font-bold"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      style={{ fontFamily: "Inter" }}
                     >
                       {item.title}
                     </h3>

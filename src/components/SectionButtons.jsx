@@ -8,13 +8,13 @@ const SectionButtons = () => {
   ];
 
   return (
-    <section className="w-full bg-softLilac/10 py-4 px-4 sm:px-12">
+    <section className="w-full bg-black px-4 sm:px-0">
       <div className="flex w-full">
         {buttons.map((btn, idx) => (
           <a
             key={idx}
             href={btn.href}
-            className="flex-1 min-w-0 text-center px-2 py-3 bg-warmSand hover:bg-crimsonDepth border border-crimsonDepth text-softPearl font-medium rounded-none transition-all duration-300 tracking-wide"
+            className="flex-1 min-w-0 text-center px-2 py-3 bg-neonBlue hover:bg-neonBlue/50 border border-darkGreen text-pureWhite font-medium rounded-none transition-all duration-300 tracking-wide"
           >
             {btn.label}
           </a>

@@ -21,12 +21,12 @@ export default function SparkleOverlay() {
                 top: `${top}%`,
                 background: `radial-gradient(circle,#ceb26d 0%, transparent 80%)`,
                 animationDelay: `${delay}s`,
-                filter: 'drop-shadow(0 0 6px #CEB26D)',
+                filter: 'drop-shadow(0 0 6px #E7D5C5)',
                 transform: `rotate(${Math.random() * 360}deg)`,
                 animationDuration: `${1.5 + Math.random() * 2}s`,
               }}
                 viewBox="0 0 24 24"
-                fill="rgba(206, 178, 109, 0.8)"
+                fill="#E8E8E8"
                 xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5L12 17l-6.5 4.5L8 14 2 9.5h7.5L12 2z" />

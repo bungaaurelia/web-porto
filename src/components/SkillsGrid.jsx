@@ -24,12 +24,12 @@ const SkillsGrid = () => {
 
   return (
     <section className="w-full py-10 px-4 sm:px-2 flex flex-col items-center">
-      <div className="relative flex flex-col bg-white/10 rounded-tr-none rounded-br-2xl rounded-bl-2xl rounded-tl-2xl p-6 md:p-10 px-4 md:px-16 max-w-8xl w-full text-softPearl shadow-lg">
+      <div className="relative flex flex-col bg-gradient-to-b from-white/15 via-white/0 to-transparent rounded-tr-none rounded-br-2xl rounded-bl-2xl rounded-tl-2xl p-6 md:p-10 px-4 md:px-16 max-w-8xl w-full text-pureWhite shadow-lg">
         <div className="absolute -top-10 -right-0 z-20">
-          <div className="relative w-60 h-10 bg-gradient-to-r from-dustyRed to-crimsonDepth text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
+          <div className="relative w-60 h-10 bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-semibold"
-              style={{ fontFamily: "'Quintessential', serif" }}
+              style={{ fontFamily: "Futuristic Armour" }}
             >
               Tools
             </p>
@@ -43,7 +43,7 @@ const SkillsGrid = () => {
               key={skill.id}
               className="group relative flex flex-col items-center mb-6"
             >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white p-1 border border-white transition duration-300 group-hover:shadow-[0_0_15px_2px_rgba(255,255,255,0.3)]">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white p-1 border border-white transition duration-300 group-hover:shadow-[0_0_15px_20px_rgba(255,255,255,0.3)]">
                 <img
                   src={skill.icon_url}
                   alt={skill.name}
@@ -51,8 +51,8 @@ const SkillsGrid = () => {
                 />
               </div>
               <span
-                className="absolute mt-28 text-sm opacity-0 group-hover:opacity-100 transition duration-300 text-softPearl font-light"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="absolute mt-28 text-sm opacity-0 group-hover:opacity-100 transition duration-300 text-pureWhite font-bold"
+                style={{ fontFamily: "Inter" }}
               >
                 {skill.name}
               </span>

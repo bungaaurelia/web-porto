@@ -12,11 +12,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        crimsonDepth: '#710014',
-        warmSand: '#B38F6f',
-        softPearl: '#F2F1ED',
-        obsidianBlack: '#161616',
-        dustyRed: '#A0525A',
+        neonPurple: '#d822c6',
+        neonPink: '#f532ab',
+        pureWhite: '#ffffff',
+        darkGreen: '#012528',
+        neonBlue: '#05f0d8',
       },
     },
   }
