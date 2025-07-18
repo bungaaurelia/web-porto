@@ -32,7 +32,7 @@ const SoftHighlights = () => {
           <div className="relative w-60 h-10 bg-gradient-to-r from-neonPurple to-neonBlue text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-semibold"
-              style={{ fontFamily: "Futuristic Armour" }}
+              style={{ fontFamily: "'Futuristic Armour', sans-serif" }}
             >
               Soft Highlights
             </p>
@@ -54,7 +54,7 @@ const SoftHighlights = () => {
               <div className="p-4 text-pureWhite space-y-2">
                 <h3
                   className="text-xl font-semibold"
-                  style={{ fontFamily: "Inter" }}
+                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {item.title}
                 </h3>

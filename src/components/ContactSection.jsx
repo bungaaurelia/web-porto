@@ -6,7 +6,7 @@ const ContactSection = () => {
           <div className="relative w-40 h-10 bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-lg"
-              style={{ fontFamily: "Futuristic Armour" }}
+              style={{ fontFamily: "'Futuristic Armour', sans-serif" }}
             >
               Stay In Touch
             </p>

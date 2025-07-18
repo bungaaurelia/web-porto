@@ -6,7 +6,7 @@ const GlimpseOfMe = () => {
           <div className="relative w-60 h-10 bg-gradient-to-r from-neonPurple to-neonBlue text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-bold"
-              style={{ fontFamily: "Futuristic Armour" }}
+              style={{ fontFamily: "'Futuristic Armour', sans-serif" }}
             >
               Glimpse of Me
             </p>

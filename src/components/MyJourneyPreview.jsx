@@ -29,7 +29,7 @@ const MyJourneyPreview = () => {
           <div className="relative w-60 h-10 bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-semibold"
-              style={{ fontFamily: "Futuristic ArmourFuturistic Armour" }}
+              style={{ fontFamily: "'Futuristic Armour', sans-serif" }}
             >
               Journey Preview
             </p>
@@ -45,7 +45,7 @@ const MyJourneyPreview = () => {
                 key={idx}
                 className="bg-white/5 backdrop-blur rounded-xl p-6 border border-white/10 hover:border-neonPink/30 transition duration-300"
               >
-                <h3 className="text-lg font-semibold" style={{ fontFamily: "Inter" }}>
+                <h3 className="text-lg font-semibold" style={{ fontFamily: "'Inter', sans-serif" }}>
                   {item.year} — {item.title}
                 </h3>
                 <p className="text-sm mt-2 font-light">{item.quote}</p>

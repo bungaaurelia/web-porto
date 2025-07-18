@@ -29,7 +29,7 @@ const SkillsGrid = () => {
           <div className="relative w-60 h-10 bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-semibold"
-              style={{ fontFamily: "Futuristic Armour" }}
+              style={{ fontFamily: "'Futuristic Armour', sans-serif" }}
             >
               Tools
             </p>
@@ -52,7 +52,7 @@ const SkillsGrid = () => {
               </div>
               <span
                 className="absolute mt-28 text-sm opacity-0 group-hover:opacity-100 transition duration-300 text-pureWhite font-bold"
-                style={{ fontFamily: "Inter" }}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {skill.name}
               </span>

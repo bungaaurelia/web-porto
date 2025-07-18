@@ -28,7 +28,7 @@ const Jumbotron = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1 }}
               className="text-lg md:text-xl text-pureWhite text-left z-10 mt-1"
-              style={{ fontFamily: "Inter" }}
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Welcome to a quiet space where thoughts, dreams, and code
               intertwine~
