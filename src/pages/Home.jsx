@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/effects.css";
-import Footer from "../components/Footer";
 import Jumbotron from "../components/Jumbotron";
 import SectionButtons from "../components/SectionButtons";
 import GlimpseOfMe from "../components/GlimpseOfMe";
@@ -50,7 +49,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

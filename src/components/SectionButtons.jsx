@@ -1,7 +1,7 @@
 const SectionButtons = () => {
   const buttons = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
+    { label: "About Me", href: "/about" },
     { label: "Journey", href: "/journey" },
     { label: "Works", href: "/works" },
     { label: "Letters", href: "/contact" },

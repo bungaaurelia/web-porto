@@ -1,11 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url(https://db.onlinewebfonts.com/c/4b54e79b4018658dba494de2ff5d6b3c?family=Inter);
-
-body {
-  font-family: 'Inter';
-}   
 
 @keyframes sparkle {
   0% {
