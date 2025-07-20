@@ -40,7 +40,7 @@ export default function About() {
     return <p className="text-center text-white">No data found.</p>;
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
       <TetrisBackground />
       <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36 font-retro">
         <section className="p-0">

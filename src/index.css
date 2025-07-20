@@ -25,3 +25,9 @@
     animation: sparkle 2.5s ease-in-out infinite;
     filter: drop-shadow(0 0 6px rgba(255, 182, 193, 0.6)) blur(6px) brightness(1.1); /* soft pink glow */
 }
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}

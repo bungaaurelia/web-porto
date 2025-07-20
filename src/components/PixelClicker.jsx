@@ -13,6 +13,11 @@ export default function PixelClicker() {
     setTimeout(() => setClicked(false), 150); // Reset animasi klik
   };
 
+  const playSound = (src) => {
+    const sound = new Audio(src);
+    sound.play();
+  };
+
   return (
     <div className="flex flex-col items-center mt-10 mb-2" style={{ fontFamily: "'Press Start 2P', cursive" }}>
       <div className="text-pink-300 font-pixel text-lg mb-2">
@@ -20,7 +25,10 @@ export default function PixelClicker() {
       </div>
       <span className="text-xs md:text-xs pixel-font">Click Me!</span>
       <motion.button
-        onClick={handleClick}
+        onClick={() => {
+          handleClick();
+          playSound("/sounds/collect_gems.mp3");
+        }}
         whileTap={{ scale: 0.9 }}
         className="relative focus:outline-none"
       >
