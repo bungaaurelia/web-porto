@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 import Footer from "../components/Footer";
 import "../styles/effects.css";
-// import "../styles/pixel.css";
-import PixelClicker from "../components/PixelClicker";
-import TetrisBackground from "../components/TetrisBackground";
+import PixelClicker from "../components/mini_games/PixelClicker";
+import GemsBackground from "../components/background/GemsBackground";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -41,7 +40,7 @@ export default function About() {
 
   return (
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
-      <TetrisBackground />
+      <GemsBackground />
       <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36 font-retro">
         <section className="p-0">
           <h1

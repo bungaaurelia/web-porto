@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import SparkleOverlay from "../components/SparkleOverlay";
+import SparkleOverlay from "../background/SparkleOverlay";
 
 const Jumbotron = () => {
   return (
@@ -32,9 +32,6 @@ const Jumbotron = () => {
             >
               Welcome to a quiet space where thoughts, dreams, and code
               intertwine~
-              {/* <br />
-              This portfolio is a living archive — frequently updated as I grow,
-              explore, and create */}
             </motion.p>
           </div>
 

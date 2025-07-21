@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { motion, AnimatePresence } from "framer-motion";
-import WeaponBackground from "../components/WeaponBackground";
-import TreasureRun from "../components/TreasureRun";
+import WeaponBackground from "../components/background/WeaponBackground";
+import TreasureRun from "../components/mini_games/TreasureRun";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -24,7 +24,14 @@ export default function Journey() {
       else setJourney(data);
     };
     fetchJourney();
-  }, []);
+
+    const body = document.body;
+    if (active) {
+      body.classList.add("overflow-hidden");
+    } else {
+      body.classList.remove("overflow-hidden");
+    }
+  }, [active]);
 
   return (
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
@@ -109,7 +116,7 @@ export default function Journey() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={() => setActive(null)}
+                // onClick={() => setActive(null)}
               >
                 <motion.div
                   className="bg-gradient-to-br from-darkGreen to-green-950/80 backdrop-blur-md text-white p-6 rounded-xl max-w-lg w-full shadow-[0_0_20px_rgba(0,255,153,0.3)] border border-white/20 relative ring-1 ring-lime-400/30"

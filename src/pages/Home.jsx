@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/effects.css";
-import Jumbotron from "../components/Jumbotron";
-import SectionButtons from "../components/SectionButtons";
-import GlimpseOfMe from "../components/GlimpseOfMe";
-import MyJourneyPreview from "../components/MyJourneyPreview";
-import SoftHighlights from "../components/SoftHighlights";
-import PersonalPicks from "../components/PersonalPicks";
-import ContactSection from "../components/ContactSection";
-import Quote from "../components/Quote";
-import SkillsGrid from "../components/SkillsGrid";
+import Jumbotron from "../components/home_comp/Jumbotron";
+import SectionButtons from "../components/home_comp/SectionButtons";
+import GlimpseOfMe from "../components/home_comp/GlimpseOfMe";
+import MyJourneyPreview from "../components/home_comp/MyJourneyPreview";
+import SoftHighlights from "../components/home_comp/SoftHighlights";
+import PersonalPicks from "../components/home_comp/PersonalPicks";
+import ContactSection from "../components/home_comp/ContactSection";
+import Quote from "../components/home_comp/Quote";
+import SkillsGrid from "../components/home_comp/SkillsGrid";
 
 export default function Home() {
   const [showFog, setShowFog] = useState(true);

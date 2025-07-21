@@ -4,7 +4,7 @@ const SectionButtons = () => {
     { label: "About Me", href: "/about" },
     { label: "Journey", href: "/journey" },
     { label: "Works", href: "/works" },
-    { label: "Letters", href: "/contact" },
+    { label: "Letters", href: "/letters" },
   ];
 
   return (

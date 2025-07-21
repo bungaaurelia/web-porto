@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import SparkleOverlay from "../components/SparkleOverlay";
+import SparkleOverlay from "../components/background/SparkleOverlay";
 
 export default function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ export default function HamburgerMenu() {
     { path: "/about", label: "About Me" },
     { path: "/journey", label: "Journey" },
     { path: "/works", label: "Works" },
-    { path: "/contact", label: "Letters" },
+    { path: "/letters", label: "Letters" },
     { path: "/about-page", label: "About" },
   ];
 
