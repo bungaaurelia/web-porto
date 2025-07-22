@@ -14,7 +14,6 @@ const SkillsGrid = () => {
       );
       const { data, error } = await supabase.from("skills").select("*");
 
-      // console.log("Fetched skills:", data);
       if (error) console.error("Supabase error:", error);
       else setSkills(data);
     };

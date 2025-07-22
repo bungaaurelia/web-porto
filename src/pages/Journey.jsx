@@ -36,7 +36,7 @@ export default function Journey() {
   return (
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
       <WeaponBackground />
-      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36 font-retro">
+      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36">
         <div className="flex flex-col items-center mt-2 gap-6 px-4">
           <section className="p-0 mb-24">
             <h1
@@ -58,7 +58,6 @@ export default function Journey() {
             {journey.map((step, index) => (
               <motion.div
                 key={step.id}
-                // onClick={() => setActive(step)}
                 className="group cursor-pointer relative pl-16 pr-4 py-8 mb-14 border-2 border-cyan-300/40 rounded-2xl bg-gradient-to-br from-cyan-200/10 via-white/5 to-black/20 shadow-[0_0_20px_rgba(255,192,203,0.2)] hover:shadow-pink-300/40 transition-all duration-300 backdrop-blur-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -116,7 +115,6 @@ export default function Journey() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                // onClick={() => setActive(null)}
               >
                 <motion.div
                   className="bg-gradient-to-br from-darkGreen to-green-950/80 backdrop-blur-md text-white p-6 rounded-xl max-w-lg w-full shadow-[0_0_20px_rgba(0,255,153,0.3)] border border-white/20 relative ring-1 ring-lime-400/30"

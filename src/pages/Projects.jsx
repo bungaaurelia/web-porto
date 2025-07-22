@@ -172,7 +172,6 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              // onClick={() => setSelectedProject(null)}
             >
               <motion.div
                 className="flex flex-col md:flex-row w-full max-w-5xl h-[80%] bg-black overflow-hidden rounded-lg shadow-2xl shadow-[0_0_20px_rgba(0,255,255,0.3)] relative"

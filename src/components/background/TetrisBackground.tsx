@@ -27,7 +27,7 @@ const TetrisBackground: React.FC = () => {
   const [blocks, setBlocks] = useState<Block[]>([]);
 
   useEffect(() => {
-    const newBlocks: Block[] = Array.from({ length: 50 }, (_, i) => ({
+    const newBlocks: Block[] = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       top: Math.random() * 100,
       left: Math.random() * 100,

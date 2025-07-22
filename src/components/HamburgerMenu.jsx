@@ -8,7 +8,6 @@ export default function HamburgerMenu() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  // Menutup menu saat pindah halaman
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);

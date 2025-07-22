@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
-import Footer from "../components/Footer";
 import "../styles/effects.css";
 import PixelClicker from "../components/mini_games/PixelClicker";
 import GemsBackground from "../components/background/GemsBackground";
@@ -41,7 +40,7 @@ export default function About() {
   return (
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
       <GemsBackground />
-      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36 font-retro">
+      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36">
         <section className="p-0">
           <h1
             className="text-5xl md:text-6xl text-center text-white"

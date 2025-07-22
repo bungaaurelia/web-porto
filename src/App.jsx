@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Journey from "./pages/Journey";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import AboutPage from "./pages/AboutPage";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/journey" element={<Journey />} />
             <Route path="/works" element={<Projects />} />
             <Route path="/letters" element={<Contact />} />
+            <Route path="/about-page" element={<AboutPage />} />
           </Routes>
         </div>
         <Footer />

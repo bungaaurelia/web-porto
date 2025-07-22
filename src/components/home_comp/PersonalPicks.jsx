@@ -53,7 +53,7 @@ const PersonalPicks = () => {
           Here are some of my personal favorites, each a little piece of me ✧
         </p>
 
-        {/* Swiper goes here */}
+        {/* Swiper */}
         <div className="w-full mt-4 mb-6 flex justify-center">
           <div className="w-full max-w-[95%]">
             <Swiper

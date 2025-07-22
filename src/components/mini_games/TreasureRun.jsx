@@ -164,7 +164,8 @@ const TreasureHuntGame = () => {
 
         {/* Start Screen */}
         {!isStarted && !isGameOver && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white"
+          style={{ fontFamily: "'Press Start 2P', cursive" }}>
             <h1 className="text-lg font-bold mb-3"> Running Hunt💨</h1>
             <button
               className="bg-yellow-500 text-black px-5 py-2 rounded shadow hover:bg-yellow-400 transition"

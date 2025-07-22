@@ -10,7 +10,7 @@ export default function PixelClicker() {
   const handleClick = () => {
     setCount((prev) => prev + 1);
     setClicked(true);
-    setTimeout(() => setClicked(false), 150); // Reset animasi klik
+    setTimeout(() => setClicked(false), 150);
   };
 
   const playSound = (src) => {
