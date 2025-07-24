@@ -68,7 +68,7 @@ const TreasureHuntGame = () => {
           });
 
           if (collided) {
-            setIsGameOver(true);            
+            setIsGameOver(true);
             playSound("/sounds/running_over.mp3");
           }
           if (scored > 0) {
@@ -119,11 +119,11 @@ const TreasureHuntGame = () => {
 
   return (
     <div
-      className="flex flex-col items-center mt-10 mb-2 text-xs w-full"
+      className="flex flex-col items-center mt-6 md:mt-10 mb-2 text-xs w-full"
       style={{ fontFamily: "'Press Start 2P', cursive" }}
     >
       <div
-        className="mx-auto w-full max-w-5xl h-56 transparent bg-black/60 relative overflow-hidden rounded-lg px-10"
+        className="mx-auto w-full max-w-5xl h-52 sm:h-56 bg-black/60 relative overflow-hidden rounded-lg px-4 sm:px-10"
         onClick={handleJump}
       >
         {/* Player */}
@@ -131,7 +131,7 @@ const TreasureHuntGame = () => {
           ref={playerRef}
           src="/man.png"
           alt="Player"
-          className={`absolute bottom-0 w-16 h-16`}
+          className="absolute bottom-0 w-12 sm:w-16 h-auto"
           style={{
             left: `${playerX}px`,
             bottom: `${playerY}px`,
@@ -145,30 +145,26 @@ const TreasureHuntGame = () => {
             key={index}
             src="/mount.png"
             alt="Obstacle"
-            className="absolute bottom-0 w-20 h-20"
+            className="absolute bottom-0 w-14 sm:w-20 h-auto"
             style={{ left: `${obs.x}px`, bottom: `-17px` }}
           />
         ))}
 
         {/* Score */}
         {isStarted && (
-          <div
-            className="absolute top-2 left-2 text-white px-3 py-1 rounded font-mono text-sm"
-            style={{
-              fontFamily: "'Press Start 2P', cursive",
-            }}
-          >
+          <div className="absolute top-2 left-2 text-white px-3 py-1 rounded font-mono text-[10px] sm:text-sm">
             Score: {score}
           </div>
         )}
 
         {/* Start Screen */}
         {!isStarted && !isGameOver && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white"
-          style={{ fontFamily: "'Press Start 2P', cursive" }}>
-            <h1 className="text-lg font-bold mb-3"> Running Hunt💨</h1>
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white text-center">
+            <h1 className="text-base sm:text-lg font-bold mb-3">
+              Running Hunt 💨
+            </h1>
             <button
-              className="bg-yellow-500 text-black px-5 py-2 rounded shadow hover:bg-yellow-400 transition"
+              className="bg-yellow-500 text-black text-xs sm:text-sm px-4 sm:px-5 py-1.5 sm:py-2 rounded shadow hover:bg-yellow-400 transition"
               onClick={() => {
                 setIsStarted(true);
                 playSound("/sounds/running_start.mp3");
@@ -181,10 +177,10 @@ const TreasureHuntGame = () => {
 
         {/* Game Over */}
         {isGameOver && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
-            <h1 className="text-xl font-bold mb-2">Game Over</h1>
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white text-center">
+            <h1 className="text-base sm:text-xl font-bold mb-2">Game Over</h1>
             <button
-              className="bg-yellow-500 text-black px-4 py-1 rounded"
+              className="bg-yellow-500 text-black text-xs sm:text-sm px-3 sm:px-4 py-1 rounded"
               onClick={handleRestart}
             >
               Restart

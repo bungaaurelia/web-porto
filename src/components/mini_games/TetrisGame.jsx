@@ -178,21 +178,26 @@ export default function TetrisGame() {
   return (
     <div
       style={{
+        maxWidth: "100%",
         width: COLS * BLOCK_SIZE,
         backgroundColor: "#111",
         padding: 10,
         display: "inline-block",
+        position: "relative",
       }}
     >
       {!started && !gameOver && (
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white"
-          style={{ fontFamily: "'Press Start 2P', cursive" }}
+          className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white text-center p-4"
+          style={{
+            fontFamily: "'Press Start 2P', cursive",
+            fontSize: "0.75rem",
+          }}
         >
-          <h1 className="font-bold mb-3">🎮 Tetris Game 🎮</h1>
-          <p className="mb-4 text-xs text-green-400">Move with arrow keys!</p>
+          <h1 className="font-bold mb-3 text-sm">🎮 Tetris Game 🎮</h1>
+          <p className="mb-4 text-green-400 text-xs">Move with arrow keys!</p>
           <button
-            className="bg-yellow-500 text-black px-5 py-2 rounded shadow hover:bg-yellow-400 transition text-xs"
+            className="bg-yellow-500 text-black px-4 py-2 rounded shadow hover:bg-yellow-400 transition text-xs"
             onClick={() => {
               setStarted(true);
               playSound("/sounds/running_start.mp3");
@@ -214,11 +219,14 @@ export default function TetrisGame() {
 
       {gameOver && (
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white"
-          style={{ fontFamily: "'Press Start 2P', cursive" }}
+          className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white text-center p-4"
+          style={{
+            fontFamily: "'Press Start 2P', cursive",
+            fontSize: "0.75rem",
+          }}
         >
-          <h1 className="text-xl font-bold mb-2 text-green-400">Game Over</h1>
-          <p className="mb-4">Final Score: {score}</p>
+          <h1 className="text-green-400 font-bold mb-2 text-sm">Game Over</h1>
+          <p className="mb-4 text-xs">Final Score: {score}</p>
           <button
             className="bg-yellow-500 text-black px-4 py-1 rounded text-xs"
             onClick={handleRestart}

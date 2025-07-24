@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import "../styles/effects.css";
 import Jumbotron from "../components/home_comp/Jumbotron";
 import SectionButtons from "../components/home_comp/SectionButtons";
 import GlimpseOfMe from "../components/home_comp/GlimpseOfMe";
@@ -19,32 +18,32 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const lineBreaks = [
-    <div key="linebreak-1" className="my-2 flex flex-col items-center py-4">
+  const LineBreak = () => (
+    <div className="my-2 flex flex-col items-center py-4">
       <div className="h-px w-full max-w-md bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-    </div>,
-  ];
+    </div>
+  );
 
   return (
-    <div className="flex flex-col min-h-screen bg-darkGreen">
+    <div className="flex flex-col min-h-screen bg-darkGreen overflow-x-hidden">
       <main className="flex-grow">
         <Jumbotron />
         <SectionButtons />
 
-        <div className="flex flex-col md:flex-rowp-6 md:p-10 max-w-[1425px] w-full text-pureWhite mx-auto mt-8 mb-10">
+        <div className="flex flex-col md:flex-row p-6 md:p-10 max-w-full md:max-w-screen-xl w-full text-pureWhite mx-auto mt-8 mb-10">
           <div className="w-full">
             <GlimpseOfMe />
-            {lineBreaks}
+            <LineBreak />
             <MyJourneyPreview />
-            {lineBreaks}
+            <LineBreak />
             <SoftHighlights />
-            {lineBreaks}
+            <LineBreak />
             <SkillsGrid />
-            {lineBreaks}
+            <LineBreak />
             <PersonalPicks />
-            {lineBreaks}
+            <LineBreak />
             <ContactSection />
-            {lineBreaks}
+            <LineBreak />
             <Quote />
           </div>
         </div>

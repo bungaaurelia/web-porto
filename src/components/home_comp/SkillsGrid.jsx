@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 
 const SkillsGrid = () => {
   const [skills, setSkills] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSkills = async () => {
-      const supabase = createClient(
-        import.meta.env.VITE_SUPABASE_URL,
-        import.meta.env.VITE_SUPABASE_ANON_KEY
-      );
-      const { data, error } = await supabase.from("skills").select("*");
-
-      if (error) console.error("Supabase error:", error);
-      else setSkills(data);
+      try {
+        const res = await fetch("http://localhost:3000/api/skills");
+        const data = await res.json();
+        setSkills(data);
+      } catch (err) {
+        console.error("Failed to fetch:", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchSkills();
@@ -23,8 +24,14 @@ const SkillsGrid = () => {
 
   return (
     <section className="w-full py-10 px-4 sm:px-2 flex flex-col items-center">
-      <div className="relative flex flex-col bg-gradient-to-b from-white/15 via-white/0 to-transparent rounded-tr-none rounded-br-2xl rounded-bl-2xl rounded-tl-2xl p-6 md:p-10 px-4 md:px-16 max-w-8xl w-full text-pureWhite shadow-lg">
-        <div className="absolute -top-10 -right-0 z-20">
+      <div
+        className="relative flex flex-col bg-gradient-to-b from-white/15 via-white/0 to-transparent rounded-tr-none rounded-br-2xl rounded-bl-2xl rounded-tl-2xl p-6 md:p-10 md:px-16
+ max-w-8xl w-full text-pureWhite shadow-lg"
+      >
+        <div
+          className="absolute -top-10 -right-0 z-20 top-[-2.5rem] sm:-top-10
+"
+        >
           <div className="relative w-60 h-10 bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
               className="text-xl font-semibold"
@@ -36,7 +43,7 @@ const SkillsGrid = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 gap-y-10">
           {skills.map((skill) => (
             <div
               key={skill.id}
@@ -49,10 +56,7 @@ const SkillsGrid = () => {
                   className="w-full h-full object-contain rounded-full"
                 />
               </div>
-              <span
-                className="absolute mt-28 text-sm opacity-0 group-hover:opacity-100 transition duration-300 text-pureWhite font-bold"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
+              <span className="absolute mt-28 text-sm opacity-0 group-hover:opacity-100 transition duration-300 text-pureWhite font-bold">
                 {skill.name}
               </span>
             </div>

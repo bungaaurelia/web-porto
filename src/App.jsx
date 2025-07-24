@@ -10,22 +10,23 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <Router>
-      <div className="font-sans min-h-screen bg-white text-gray-800 flex flex-col">
-        <Header />
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/journey" element={<Journey />} />
-            <Route path="/works" element={<Projects />} />
-            <Route path="/letters" element={<Contact />} />
-            <Route path="/about-page" element={<AboutPage />} />
-          </Routes>
+    <>
+      <Router>
+        <div className="font-sans min-h-screen bg-white text-gray-800 flex flex-col">
+          <Header />
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/journey" element={<Journey />} />
+              <Route path="/works" element={<Projects />} />
+              <Route path="/letters" element={<Contact />} />
+              <Route path="/about-page" element={<AboutPage />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </>
   );
 }
-

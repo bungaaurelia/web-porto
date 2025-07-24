@@ -3,26 +3,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import { Navigation, Autoplay, EffectCoverflow } from "swiper/modules";
-import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 const PersonalPicks = () => {
   const [picks, setPicks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPicks = async () => {
-      const { data, error } = await supabase.from("personal_picks").select("*");
-
-      console.log("Fetched personal picks:", data);
-      if (error) {
-        console.error("Supabase error:", error);
-      } else if (data) {
+      try {
+        const res = await fetch("http://localhost:3000/api/personal-picks");
+        const data = await res.json();
         setPicks(data);
+      } catch (err) {
+        console.error("Failed to fetch:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -43,13 +39,7 @@ const PersonalPicks = () => {
             <div className="absolute bottom-0 left-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-white/10" />
           </div>
         </div>
-        <p
-          className="text-pureWhite text-lg md:text-xl text-center mb-6"
-          style={{
-            fontFamily: "Inter",
-            fontSize: "1.125rem",
-          }}
-        >
+        <p className="text-pureWhite text-lg md:text-xl text-center mb-6 font-inter">
           Here are some of my personal favorites, each a little piece of me ✧
         </p>
 
@@ -73,7 +63,7 @@ const PersonalPicks = () => {
               }}
               observer={true}
               observeParents={true}
-              preloadImages={true}
+              // preloadImages={true}
               watchSlidesProgress={true}
               initialSlide={0}
               onInit={(swiper) => {
@@ -88,7 +78,7 @@ const PersonalPicks = () => {
                 <SwiperSlide
                   key={item.id}
                   style={{ width: "320px" }}
-                  className="h-[420px] bg-white/10 rounded-2xl overflow-hidden shadow-lg text-pureWhite flex flex-col items-center justify-center"
+                  className="h-[420px] w-[280px] sm:w-[300px] md:w-[320px] bg-white/10 rounded-2xl overflow-hidden shadow-lg text-pureWhite flex flex-col items-center justify-center"
                 >
                   <img
                     src={item.image_url}
@@ -119,6 +109,7 @@ const PersonalPicks = () => {
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
+          className="mb-4"
         />
       </div>
     </section>

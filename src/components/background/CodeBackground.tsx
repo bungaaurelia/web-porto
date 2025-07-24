@@ -13,11 +13,11 @@ interface Code {
   rotate: number;
 }
 
-const TetrisBackground: React.FC = () => {
+const CodeBackground: React.FC = () => {
   const [codes, setCodes] = useState<Code[]>([]);
 
   useEffect(() => {
-    const newCodes: Code[] = Array.from({ length:30 }, (_, i) => ({
+    const newCodes: Code[] = Array.from({ length: 30 }, (_, i) => ({
       id: i,
       top: Math.random() * 100,
       left: Math.random() * 100,
@@ -34,18 +34,20 @@ const TetrisBackground: React.FC = () => {
         <img
           key={code.id}
           src={code.image}
-          alt="tetris code"
-          className="absolute opacity-20 mix-blend-soft-light"
+          alt="code bg"
+          className="absolute opacity-20 mix-blend-soft-light xs:block"
           style={{
             top: `${code.top}%`,
             left: `${code.left}%`,
-            width: `${code.size}px`,
+            width: `min(${code.size * 0.6}px, 16vw)`,
             transform: `rotate(${code.rotate}deg)`,
           }}
+
         />
       ))}
     </div>
+
   );
 };
 
-export default TetrisBackground;
+export default CodeBackground;

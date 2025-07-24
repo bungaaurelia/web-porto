@@ -45,11 +45,11 @@ const TetrisBackground: React.FC = () => {
           key={block.id}
           src={block.image}
           alt="tetris block"
-          className="absolute opacity-20 mix-blend-soft-light"
+          className="absolute opacity-20 mix-blend-soft-light xs:block"
           style={{
             top: `${block.top}%`,
             left: `${block.left}%`,
-            width: `${block.size}px`,
+            width: `min(${block.size * 0.6}px, 16vw)`,
             transform: `rotate(${block.rotate}deg)`,
           }}
         />

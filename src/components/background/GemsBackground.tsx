@@ -46,11 +46,11 @@ const GemsBackground: React.FC = () => {
           key={gem.id}
           src={gem.image}
           alt="gems gem"
-          className="absolute opacity-20 mix-blend-soft-light"
+          className="absolute opacity-20 mix-blend-soft-light xs:block"
           style={{  
             top: `${gem.top}%`,
             left: `${gem.left}%`,
-            width: `${gem.size}px`,
+             width: `min(${gem.size * 0.6}px, 16vw)`,
             transform: `rotate(${gem.rotate}deg)`,
           }}
         />

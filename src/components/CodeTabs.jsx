@@ -89,12 +89,12 @@ export default function CodeTabs() {
   return (
     <div className="bg-[#1e1e1e] text-[#d4d4d4] rounded-xl shadow-lg overflow-hidden w-full max-w-5xl mx-auto border border-neutral-700 sticky">
       {/* Tab Bar */}
-      <div className="flex items-center space-x-2 px-4 py-2 bg-[#252526] border-b border-neutral-700 text-sm">
+      <div className="flex items-center space-x-2 px-4 py-2 bg-[#252526] border-b border-neutral-700 text-sm overflow-x-auto scrollbar-thin">
         {tabs.map((tab, index) => (
           <button
             key={index}
             className={cn(
-              "px-3 py-1 rounded-t text-xs font-mono",
+              "px-3 py-1 rounded-t text-xs font-mono transition-all duration-200",
               index === activeTab
                 ? "bg-[#1e1e1e] text-white"
                 : "text-gray-400 hover:text-white"
@@ -107,11 +107,11 @@ export default function CodeTabs() {
       </div>
 
       {/* Code Area */}
-      <div className="relative font-mono text-sm px-6 py-4 h-96 overflow-auto bg-[#1e1e1e]">
-        <code className="text-[#9cdcfe] block">
+      <div className="relative font-mono text-sm px-6 py-4 h-[60vh] md:h-96 overflow-auto bg-[#1e1e1e]">
+        <code className="text-[#9cdcfe] block text-xs sm:text-sm">
           {tabs[activeTab].content.split("\n").map((line, idx) => (
             <div key={idx} className="flex">
-              <span className="select-none text-neutral-600 w-8 pr-4 text-right">
+              <span className="select-none text-neutral-600 min-w-[2rem] pr-4 text-right">
                 {idx + 1}
               </span>
               <span className="whitespace-pre-wrap">{line}</span>

@@ -46,11 +46,11 @@ const GamesBackground: React.FC = () => {
           key={game.id}
           src={game.image}
           alt="games game"
-          className="absolute opacity-20 mix-blend-soft-light"
+          className="absolute opacity-20 mix-blend-soft-light xs:block"
           style={{  
             top: `${game.top}%`,
             left: `${game.left}%`,
-            width: `${game.size}px`,
+            width: `min(${game.size * 0.6}px, 16vw)`,
             transform: `rotate(${game.rotate}deg)`,
           }}
         />

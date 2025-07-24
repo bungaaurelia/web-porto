@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { motion, AnimatePresence } from "framer-motion";
 import WeaponBackground from "../components/background/WeaponBackground";
 import TreasureRun from "../components/mini_games/TreasureRun";
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-
 export default function Journey() {
   const [journey, setJourney] = useState([]);
   const [active, setActive] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchJourney = async () => {
-      const { data, error } = await supabase
-        .from("journey")
-        .select('id, year, title, content, image_url, "order"')
-        .order("order", { ascending: true });
-
-      if (error) console.error(error);
-      else setJourney(data);
+      try {
+        const res = await fetch("http://localhost:3000/api/journey");
+        const data = await res.json();
+        setJourney(data);
+      } catch (err) {
+        console.error("Failed to fetch:", err);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchJourney();
 
@@ -36,7 +33,8 @@ export default function Journey() {
   return (
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
       <WeaponBackground />
-      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-36">
+      <div className="min-h-screen bg-darkGreen text-white px-4 sm:px-6 py-8 sm:py-12 space-y-24 sm:space-y-36">
+
         <div className="flex flex-col items-center mt-2 gap-6 px-4">
           <section className="p-0 mb-24">
             <h1
@@ -53,12 +51,12 @@ export default function Journey() {
 
           <div className="w-full max-w-2xl relative">
             {/* Vertical dotted line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px border-l-2 border-dashed border-white/30 z-0" />
+            <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px border-l-2 border-dashed border-white/30 z-0" />
 
             {journey.map((step, index) => (
               <motion.div
                 key={step.id}
-                className="group cursor-pointer relative pl-16 pr-4 py-8 mb-14 border-2 border-cyan-300/40 rounded-2xl bg-gradient-to-br from-cyan-200/10 via-white/5 to-black/20 shadow-[0_0_20px_rgba(255,192,203,0.2)] hover:shadow-pink-300/40 transition-all duration-300 backdrop-blur-lg"
+                className="group cursor-pointer relative pl-12 sm:pl-16 pr-4 py-6 sm:py-8 mb-14 border-2 border-cyan-300/40 rounded-2xl bg-gradient-to-br from-cyan-200/10 via-white/5 to-black/20 shadow-[0_0_20px_rgba(255,192,203,0.2)] hover:shadow-pink-300/40 transition-all duration-300 backdrop-blur-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.15 }}
@@ -68,7 +66,8 @@ export default function Journey() {
 
                 {/* Content */}
 
-                <div className="flex items-center gap-4 mt-5">
+                <div className="flex flex-col sm:flex-row items-center gap-4 mt-5 text-center sm:text-left">
+
                   <span
                     className="absolute top-2 right-5 bg-yellow-400 text-black text-xs px-2 py-0.5 rounded-sm shadow-md mt-5"
                     style={{ fontFamily: "'Press Start 2P', cursive" }}
@@ -77,10 +76,11 @@ export default function Journey() {
                   </span>
                   {step.image_url && (
                     <img
-                      src={step.image_url}
-                      alt=""
-                      className="w-20 h-20 object-contain rounded shadow-inner border border-white/10 bg-black/20 p-1"
-                    />
+  src={step.image_url}
+  alt=""
+  className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded shadow-inner border border-white/10 bg-black/20 p-1"
+/>
+
                   )}
                   <div>
                     <h3 className="text-lg font-pixel text-white tracking-wide">
@@ -97,7 +97,7 @@ export default function Journey() {
                       setActive(step);
                       setShowPopup(true);
                     }}
-                    className="mt-5 px-2 py-2 bg-pink-500 text-white hover:bg-pink-400 rounded transition duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300/50 focus:ring-offset-2"
+                    className="mt-5 px-3 py-2 text-[10px] sm:text-xs sm:px-4 sm:py-2 bg-pink-500 text-white hover:bg-pink-400 rounded transition duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-300/50 focus:ring-offset-2"
                     style={{ fontFamily: "'Press Start 2P', cursive" }}
                   >
                     ENTER QUEST
@@ -117,7 +117,7 @@ export default function Journey() {
                 exit={{ opacity: 0 }}
               >
                 <motion.div
-                  className="bg-gradient-to-br from-darkGreen to-green-950/80 backdrop-blur-md text-white p-6 rounded-xl max-w-lg w-full shadow-[0_0_20px_rgba(0,255,153,0.3)] border border-white/20 relative ring-1 ring-lime-400/30"
+                  className="bg-gradient-to-br from-darkGreen to-green-950/80 backdrop-blur-md text-white p-6 rounded-xl max-w-lg w-full p-4 sm:p-6 text-sm sm:text-base shadow-[0_0_20px_rgba(0,255,153,0.3)] border border-white/20 relative ring-1 ring-lime-400/30"
                   initial={{ scale: 0.9, y: 40 }}
                   animate={{ scale: 1, y: 0 }}
                   exit={{ scale: 0.9, y: 40 }}
@@ -137,7 +137,8 @@ export default function Journey() {
                   <span className="text-xs text-white/50 italic">
                     {active.year}
                   </span>
-                  <div className="mt-4 text-sm text-white/80 leading-relaxed whitespace-pre-line">
+                  <div className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed whitespace-pre-line">
+
                     {active.content}
                   </div>
                   <button

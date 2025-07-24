@@ -1,7 +1,7 @@
 const GlimpseOfMe = () => {
   return (
     <section className="w-full py-10 px-4 sm:px-2 flex justify-center">
-      <div className="relative flex flex-col md:flex-row bg-gradient-to-b from-white/15 via-white/0 to-transparent rounded-tr-2xl rounded-br-2xl rounded-bl-2xl rounded-tl-none p-6 md:p-10 max-w-8xl w-full text-pureWhite shadow-lg">
+      <div className="relative flex flex-col md:flex-row gap-8 md:flex-row bg-gradient-to-b from-white/15 via-white/0 to-transparent rounded-tr-2xl rounded-br-2xl rounded-bl-2xl rounded-tl-none p-6 md:p-10 max-w-8xl w-full text-pureWhite shadow-lg">
         <div className="absolute -top-10 -left-0 z-20">
           <div className="relative w-60 h-10 bg-gradient-to-r from-neonPurple to-neonBlue text-white font-semibold tracking-wide flex items-center justify-center shadow-md rounded-tr-lg rounded-tl-lg">
             <p
@@ -14,7 +14,7 @@ const GlimpseOfMe = () => {
           </div>
         </div>
         {/* Left: Image */}
-        <div className="relative">
+        <div className="relative flex justify-center items-center w-full md:w-auto">
           <div className="absolute inset-0 blur-lg opacity-40 z-0">
             <img
               src="/silhouette.png"
@@ -25,7 +25,7 @@ const GlimpseOfMe = () => {
           <img
             src="/silhouette.png"
             alt="Aurelia"
-            className="relative z-10 rounded-xl object-cover h-[300px] w-auto"
+            className="relative z-10 rounded-xl object-cover h-[220px] sm:h-[260px] md:h-[300px] w-auto"
           />
         </div>
 

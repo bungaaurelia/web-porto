@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 const SoftHighlights = () => {
   const [highlights, setHighlights] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchHighlights = async () => {
-      const { data, error } = await supabase.from("works").select("*");
-
-      if (error) {
-        console.error("Supabase error:", error);
-      } else if (data) {
+      try {
+        const res = await fetch("http://localhost:3000/api/projects");
+        const data = await res.json();
         const shuffled = data.sort(() => Math.random() - 0.5);
         const randomThree = shuffled.slice(0, 3);
         setHighlights(randomThree);
+      } catch (err) {
+        console.error("Failed to fetch:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -40,7 +37,8 @@ const SoftHighlights = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 w-full max-w-7xl mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-7xl mt-8">
+
           {highlights.map((item) => (
             <div
               key={item.id}
@@ -49,7 +47,8 @@ const SoftHighlights = () => {
               <img
                 src={item.image_url}
                 alt={item.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-40 sm:h-48 object-cover"
+
               />
               <div className="p-4 text-pureWhite space-y-2">
                 <h3
@@ -62,9 +61,10 @@ const SoftHighlights = () => {
               </div>
             </div>
           ))}
-          <div className="col-span-full flex justify-end">
+          <div className="col-span-full flex justify-end pt-4 sm:pt-6">
+
             <a
-              href="/projects"
+              href="/works"
               className="mt-4 mb-4 inline-block bg-neonBlue hover:bg-neonBlue/50 text-white px-5 py-2 rounded-full transition duration-300 text-sm w-fit font-bold"
             >
               Explore Further →

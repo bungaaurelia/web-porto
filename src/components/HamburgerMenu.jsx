@@ -33,7 +33,7 @@ export default function HamburgerMenu() {
       {!isHome && (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-white p-2 focus:outline-none z-[999] fixed top-4 right-4"
+          className="text-white p-2 fixed top-4 right-4 md:top-6 md:right-6 z-[999]"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -42,7 +42,7 @@ export default function HamburgerMenu() {
 
       {/* Overlay menu */}
       {isOpen && (
-        <div className="fixed inset-0 bg-darkGreen/90 backdrop-blur-md flex flex-col items-center justify-center space-y-6 text-white text-2xl z-40 transition-all duration-300">
+        <div className="fixed inset-0 bg-darkGreen/90 backdrop-blur-md flex flex-col items-center justify-center space-y-6 text-white text-2xl z-40 transition-all duration-300 overflow-hidden">
           <SparkleOverlay />
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
@@ -51,14 +51,17 @@ export default function HamburgerMenu() {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className="relative flex justify-center w-full"
+                className="relative flex justify-center w-full group"
               >
+                {/* Active background glow */}
                 {isActive && (
-                  <div className="absolute w-60 h-10 bg-gradient-to-r from-neonPurple to-neonBlue rounded-tr-lg rounded-tl-lg shadow-md -top-1" />
+                  <div className="absolute w-[80vw] max-w-[240px] h-10 bg-gradient-to-r from-neonPurple to-neonBlue rounded-tr-lg rounded-tl-lg shadow-md -top-1 z-0 transition-all duration-300" />
                 )}
                 <span
-                  className={`relative z-10 text-xl font-bold tracking-wide ${
-                    isActive ? "text-white" : "text-white/70"
+                  className={`relative z-10 text-xl font-bold tracking-wide px-4 py-2 transition-all duration-200 ${
+                    isActive
+                      ? "text-white"
+                      : "text-white/70 group-hover:text-pink-300"
                   }`}
                   style={{ fontFamily: "'Futuristic Armour', sans-serif" }}
                 >
@@ -67,15 +70,17 @@ export default function HamburgerMenu() {
               </Link>
             );
           })}
+
+          {/* Decorative images */}
           <img
             src="/logo.png"
             alt="Line Decoration"
-            className="absolute bottom-1 right-4 opacity-20 w-96 h-auto"
+            className="w-60 sm:w-96 absolute bottom-1 right-4 opacity-20 h-auto pointer-events-none"
           />
           <img
             src="/logo.png"
             alt="Line Decoration Mirror"
-            className="absolute top-1 left-4 opacity-20 w-96 h-auto scale-x-[-1] scale-y-[-1]"
+            className="w-60 sm:w-96 absolute top-1 left-4 opacity-20 h-auto scale-x-[-1] scale-y-[-1] pointer-events-none"
           />
         </div>
       )}

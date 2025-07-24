@@ -1,28 +1,26 @@
 import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MemoryGame from "../components/mini_games/MemoryGame";
 import GamesBackground from "../components/background/GamesBackground";
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("All");
   const [activePage, setActivePage] = useState(1);
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const { data, error } = await supabase.from("works").select("*");
-      if (error) {
-        console.error("Error fetching projects:", error);
-      } else {
+      try {
+        const res = await fetch("http://localhost:3000/api/projects");
+        const data = await res.json();
         setProjects(data);
+      } catch (err) {
+        console.error("Failed to fetch:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProjects();
@@ -64,7 +62,7 @@ export default function Projects() {
   return (
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
       <GamesBackground />
-      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-18 font-retro">
+      <div className="min-h-screen bg-darkGreen text-white px-6 py-12 space-y-18">
         <section className="text-center mb-20">
           <h1
             className="text-5xl md:text-6xl text-white"
@@ -73,12 +71,12 @@ export default function Projects() {
               fontFamily: "'Press Start 2P', cursive",
             }}
           >
-            ◼ Works/Projects
+            ◼ Works
           </h1>
         </section>
 
         {/* Tabs */}
-        <div className="flex justify-center space-x-4 flex-wrap mb-8">
+        <div className="flex justify-center flex-wrap gap-2 mb-8">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -95,7 +93,7 @@ export default function Projects() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 px-4 md:px-12 lg:px-16">
           {currentProjects.map((proj) => (
             <div
               key={proj.id}
@@ -106,7 +104,7 @@ export default function Projects() {
               <img
                 src={proj.image_url}
                 alt={proj.title}
-                className="w-full h-64 object-cover rounded-t-lg border-b-2 border-cyan-500"
+                className="w-full h-48 md:h-64 object-cover rounded-t-lg border-b-2 border-cyan-500"
               />
 
               {/* Title & Year */}
@@ -118,7 +116,7 @@ export default function Projects() {
               </div>
 
               {/* Tech Stack */}
-              <div className="flex px-4 py-3 justify-center items-center bg-black/40 rounded-b-lg text-sm min-h-[12rem]">
+              <div className="flex px-4 py-3 justify-center items-center bg-black/40 rounded-b-lg text-sm min-h-[8rem] md:min-h-[12rem]">
                 {Array.isArray(proj.tech_stack) ? (
                   <div className="flex flex-wrap gap-2 justify-center mt-6">
                     {proj.tech_stack.map((tech, index) => (
@@ -174,7 +172,7 @@ export default function Projects() {
               exit={{ opacity: 0 }}
             >
               <motion.div
-                className="flex flex-col md:flex-row w-full max-w-5xl h-[80%] bg-black overflow-hidden rounded-lg shadow-2xl shadow-[0_0_20px_rgba(0,255,255,0.3)] relative"
+                className="flex flex-col md:flex-row w-full max-w-5xl max-h-[90vh] h-auto bg-black overflow-auto rounded-lg shadow-2xl shadow-[0_0_20px_rgba(0,255,255,0.3)] relative"
                 initial={{ scale: 0.9, y: 40 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 40 }}
@@ -190,7 +188,7 @@ export default function Projects() {
                 </div>
 
                 {/* Info Kanan */}
-                <div className="md:w-1/2 h-full bg-darkGreen text-white p-6 flex flex-col justify-between text-sm font-retro">
+                <div className="md:w-1/2 h-full bg-darkGreen text-white p-6 flex flex-col justify-between text-sm">
                   <div>
                     <h2 className="text-xl font-bold mb-2">
                       {selectedProject.title}
@@ -239,7 +237,7 @@ export default function Projects() {
 
                 {/* Tombol Close */}
                 <button
-                  className="absolute top-3 right-4 text-white hover:text-green-400 hover:scale-110 transition-transform duration-150 ease-out text-lg"
+                  className="absolute top-3 right-4 text-white text-2xl hover:text-green-400"
                   onClick={() => setSelectedProject(null)}
                 >
                   ✕

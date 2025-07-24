@@ -19,11 +19,16 @@ export default function PixelClicker() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10 mb-2" style={{ fontFamily: "'Press Start 2P', cursive" }}>
-      <div className="text-pink-300 font-pixel text-lg mb-2">
+    <div
+      className="flex flex-col items-center mt-6 md:mt-10 mb-2"
+      style={{ fontFamily: "'Press Start 2P', cursive" }}
+    >
+      <div className="text-pink-300 font-pixel text-sm md:text-lg mb-1 md:mb-2 text-center">
         💎 Crystal Collector 💎
       </div>
-      <span className="text-xs md:text-xs pixel-font">Click Me!</span>
+
+      <span className="text-[10px] md:text-xs pixel-font">Click Me!</span>
+
       <motion.button
         onClick={() => {
           handleClick();
@@ -36,14 +41,15 @@ export default function PixelClicker() {
         <img
           src="/gems.png"
           alt="Crystal"
-          className={`w-24 h-auto transition-transform duration-150 ${
+          className={`w-16 md:w-24 h-auto transition-transform duration-150 ${
             clicked ? "scale-110" : ""
           }`}
         />
       </motion.button>
-        <p className="text-md md:text-xs pixel-font">
-          Crystals collected: <span className="text-yellow-300">{count}</span>
-        </p>
+
+      <p className="text-xs md:text-sm pixel-font text-center mt-1">
+        Crystals collected: <span className="text-yellow-300">{count}</span>
+      </p>
     </div>
   );
 }

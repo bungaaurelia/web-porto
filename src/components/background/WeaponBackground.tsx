@@ -44,11 +44,11 @@ const WeaponBackground: React.FC = () => {
           key={weapon.id}
           src={weapon.image}
           alt="weapon"
-          className="absolute opacity-20 mix-blend-soft-light"
+          className="absolute opacity-20 mix-blend-soft-light xs:block"
           style={{
             top: `${weapon.top}%`,
             left: `${weapon.left}%`,
-            width: `${weapon.size}px`,
+             width: `min(${weapon.size * 0.6}px, 16vw)`,
             transform: `rotate(${weapon.rotate}deg)`,
           }}
         />

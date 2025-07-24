@@ -22,10 +22,10 @@ const generateCards = () => {
     .sort(() => Math.random() - 0.5);
 };
 
- const playSound = (src) => {
-    const sound = new Audio(src);
-    sound.play();
-  };
+const playSound = (src) => {
+  const sound = new Audio(src);
+  sound.play();
+};
 
 export default function MemoryGame() {
   const [cards, setCards] = useState(generateCards());
@@ -81,16 +81,18 @@ export default function MemoryGame() {
 
   return (
     <div
-      className="mt-24 text-neonBlue px-6 mb-5"
+      className="mt-16 sm:mt-24 text-neonBlue px-4 sm:px-6 mb-5"
       style={{ fontFamily: "'Press Start 2P', cursive" }}
     >
-      <h2 className="text-center text-xl mb-6">🃏 Memory Card Game 🃏</h2>
-      <span className="flex flex-col items-center mb-5 text-xs md:text-xs pixel-font">
+      <h2 className="text-center text-lg sm:text-xl mb-4 sm:mb-6">
+        🃏 Memory Card Game 🃏
+      </h2>
+      <span className="flex flex-col items-center mb-4 sm:mb-5 text-xs pixel-font">
         Match the Cards!
       </span>
 
       <div className="relative">
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 xs:grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto px-1 sm:px-0">
           {cards.map((card, index) => (
             <div
               key={card.id}
@@ -98,24 +100,24 @@ export default function MemoryGame() {
                 handleClick(index);
                 playSound("/sounds/card_flip.mp3");
               }}
-              className={`cursor-pointer rounded-lg h-28 flex items-center justify-center shadow-lg transition duration-300 ${
+              className={`cursor-pointer rounded-md sm:rounded-lg h-24 sm:h-28 flex items-center justify-center shadow-md transition duration-300 ${
                 card.flipped || card.matched
                   ? "bg-yellow-300 text-black scale-105"
                   : "bg-black text-white"
               }`}
               style={{
                 fontFamily: "'Press Start 2P', cursive",
-                boxShadow: card.matched ? "0 0 20px #00ffc3" : "",
+                boxShadow: card.matched ? "0 0 15px #00ffc3" : "",
               }}
             >
               {card.flipped || card.matched ? (
                 <img
                   src={card.image}
                   alt={card.name}
-                  className="w-16 h-16 object-contain"
+                  className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
                 />
               ) : (
-                <span className="text-xl">?</span>
+                <span className="text-lg sm:text-xl">?</span>
               )}
             </div>
           ))}
@@ -123,12 +125,14 @@ export default function MemoryGame() {
 
         {isFinished && (
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/80 rounded-lg w-full max-w-3xl h-full flex flex-col items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)]"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/80 rounded-lg w-full max-w-3xl h-full flex flex-col items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)] p-4"
             style={{ fontFamily: "'Press Start 2P', cursive" }}
           >
-            <div className="text-green-400 text-xl mb-4">All Matched!</div>
+            <div className="text-green-400 text-base sm:text-xl mb-3 sm:mb-4">
+              All Matched!
+            </div>
             <button
-              className="bg-yellow-400 text-black px-4 py-2 rounded shadow hover:bg-yellow-300 transition"
+              className="bg-yellow-400 text-black text-xs sm:text-sm px-4 py-2 rounded shadow hover:bg-yellow-300 transition"
               onClick={handleRestart}
             >
               Restart
