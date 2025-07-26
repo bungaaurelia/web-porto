@@ -237,6 +237,33 @@ export default function TetrisGame() {
       )}
 
       {renderGrid()}
+      {/* Kontrol Mobile */}
+      <div className="flex justify-center gap-4 mt-4 md:hidden">
+        <button
+          className="bg-gray-700 text-white px-4 py-2 rounded shadow active:bg-gray-500"
+          onClick={() => moveHorizontally(-1)}
+          disabled={!started || gameOver}
+          aria-label="Left"
+        >
+          ◀
+        </button>
+        <button
+          className="bg-gray-700 text-white px-4 py-2 rounded shadow active:bg-gray-500"
+          onClick={moveDown}
+          disabled={!started || gameOver}
+          aria-label="Down"
+        >
+          ▼
+        </button>
+        <button
+          className="bg-gray-700 text-white px-4 py-2 rounded shadow active:bg-gray-500"
+          onClick={() => moveHorizontally(1)}
+          disabled={!started || gameOver}
+          aria-label="Right"
+        >
+          ▶
+        </button>
+      </div>
     </div>
   );
 }

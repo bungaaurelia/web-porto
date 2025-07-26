@@ -32,8 +32,7 @@ const Jumbotron = () => {
               className="text-xs sm:text-lg text-pureWhite text-center sm:text-left z-10 mt-1"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Welcome to a quiet space where thoughts, dreams, and code
-              intertwine~
+              Welcome to my personal portofolio space
             </motion.p>
           </div>
 

@@ -98,7 +98,7 @@ export default function Projects() {
             <div
               key={proj.id}
               onClick={() => setSelectedProject(proj)}
-              className="bg-black/40 rounded-lg shadow-lg hover:scale-105 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-neonBlue"
+              className="bg-black/40 rounded-lg shadow-lg hover:scale-105 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-neonBlue cursor-pointer"
             >
               {/* Image */}
               <img
@@ -172,7 +172,7 @@ export default function Projects() {
               exit={{ opacity: 0 }}
             >
               <motion.div
-                className="flex flex-col md:flex-row w-full max-w-5xl max-h-[90vh] h-auto bg-black overflow-auto rounded-lg shadow-2xl shadow-[0_0_20px_rgba(0,255,255,0.3)] relative"
+                className="flex flex-col md:flex-row w-full max-w-5xl max-w-[95vw] h-[90vh] bg-black overflow-auto rounded-lg shadow-2xl shadow-[0_0_20px_rgba(0,255,255,0.3)] relative"
                 initial={{ scale: 0.9, y: 40 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 40 }}
@@ -183,12 +183,14 @@ export default function Projects() {
                   <img
                     src={selectedProject.image_url}
                     alt={selectedProject.title}
-                    className="w-full h-auto max-h-[70%] object-cover rounded-lg"
+                    className="w-full h-auto max-h-[70%] object-contain rounded-lg"
                   />
                 </div>
 
                 {/* Info Kanan */}
-                <div className="md:w-1/2 h-full bg-darkGreen text-white p-6 flex flex-col justify-between text-sm">
+                <div
+                  className="w-full md:w-1/2 md:flex-1 md:h-full md:min-h-0 bg-darkGreen text-white p-6 flex flex-col justify-between text-sm overflow-y-auto"
+                >
                   <div>
                     <h2 className="text-xl font-bold mb-2">
                       {selectedProject.title}
@@ -214,30 +216,38 @@ export default function Projects() {
 
                   {/* Links */}
                   <div className="mt-6 space-x-4">
-                    {selectedProject.link_demo && (
-                      <a
-                        href={selectedProject.link_demo}
-                        target="_blank"
-                        className="inline-block bg-yellow-400 text-black px-3 py-1 rounded shadow hover:bg-yellow-300 transition"
-                      >
-                        🔗 Live Demo
-                      </a>
-                    )}
-                    {selectedProject.link_repo && (
-                      <a
-                        href={selectedProject.link_repo}
-                        target="_blank"
-                        className="inline-block bg-black text-white px-3 py-1 rounded border border-white hover:bg-white hover:text-black transition"
-                      >
-                        💻 GitHub
-                      </a>
+                    {selectedProject.link_demo || selectedProject.link_repo ? (
+                      <>
+                        {selectedProject.link_demo && (
+                          <a
+                            href={selectedProject.link_demo}
+                            target="_blank"
+                            className="inline-block bg-yellow-400 text-black px-3 py-1 rounded shadow hover:bg-yellow-300 transition"
+                          >
+                            🔗 Live Demo
+                          </a>
+                        )}
+                        {selectedProject.link_repo && (
+                          <a
+                            href={selectedProject.link_repo}
+                            target="_blank"
+                            className="inline-block bg-black text-white px-3 py-1 rounded border border-white hover:bg-white hover:text-black transition"
+                          >
+                            💻 GitHub
+                          </a>
+                        )}
+                      </>
+                    ) : (
+                      <span className="text-gray-400 italic">
+                        No links available
+                      </span>
                     )}
                   </div>
                 </div>
 
                 {/* Tombol Close */}
                 <button
-                  className="absolute top-3 right-4 text-white text-2xl hover:text-green-400"
+                  className="absolute top-3 right-4 text-white text-2xl hover:text-green-400 z-10"
                   onClick={() => setSelectedProject(null)}
                 >
                   ✕

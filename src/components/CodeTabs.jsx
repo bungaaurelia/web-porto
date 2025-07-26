@@ -9,36 +9,44 @@ const tabs = [
     content: `// About This Page
 const purpose = () => {
   return \`
-  This page is a showcase of my skills and projects. 
-  It serves as a portfolio to demonstrate my abilities as a developer.
-  I created this page to share my journey and the technologies I use,
-  as well as to provide insight into my design philosophy and future plans.
+    This page is a showcase of my skills and projects. 
+    It serves as a portfolio to demonstrate my abilities as a developer.
+    I created this page to share my journey and the technologies I use,
+    as well as to provide insight and future plans.
   \`;
 };`,
   },
   {
     name: "tech-stack.jsx",
     content: `// Technology Stack
-const stack = [
-  "React.js",
-  "Tailwind CSS",
-  "Framer Motion",
-  "Swiper.js",
-  "JavaScript / JSX",
-  "Vite",
-  "VS Code",
-  "Supabase",
-  "GitHub"
-];`,
+const techStack = {
+  frontend: [
+    { name: "Next.js", version: "15.4.3" },
+    { name: "React", version: "19.1.0" },
+    { name: "React DOM", version: "19.1.0" },
+    { name: "Tailwind CSS", version: "4" }
+  ],
+  backend: [
+    { name: "Next.js API Routes" },
+    { name: "CORS Middleware", version: "2.8.5" }
+  ],
+  databaseAndAuth: [
+    { name: "Supabase JS Client", version: "2.52.0" }
+  ],
+  tools: [
+    { name: "Tailwind PostCSS Plugin", version: "4" }
+  ]
+};
+`,
   },
   {
     name: "visuals.jsx",
     content: `// Design Philosophy
 function design() {
   return \`
-  I wanted something that felt like me, but it's quite hard to describe. 
-  The dark theme reflects the overall mood I wanted to convey, while vibrant accent colors 
-  keep things playful. so I tried to find a balance between the two.
+    I want something that feels like me, but it's quite difficult to describe. 
+    The dark theme reflects the overall mood that feels calm and deep, while the color of the accent is bright shows my side that can be cheerful.
+    So I tried to find a balance between the two.
   \`;
 }`,
   },
@@ -50,7 +58,8 @@ const features = () => ({
   miniGame: true,
   animations: "smooth",
   theme: "darkMode",
-  interactivity: "high"
+  interactivity: "high",
+  responsive: true
 });`,
   },
   {
@@ -58,9 +67,9 @@ const features = () => ({
     content: `// Message to You
 const message = () => {
   return \`
-  Thank you for visiting 💌
-  This portfolio is my creative space where I share my work and ideas.
-  Let's connect and create something beautiful together.
+    Thank you for visiting 💌
+    This portfolio is my creative space where I share my work and ideas.
+    Let's connect and create something beautiful together.
   \`;
 };`,
   },

@@ -40,7 +40,7 @@ const PersonalPicks = () => {
           </div>
         </div>
         <p className="text-pureWhite text-lg md:text-xl text-center mb-6 font-inter">
-          Here are some of my personal favorites, each a little piece of me ✧
+          Here are some of my personal favorites ~ TMI ✧
         </p>
 
         {/* Swiper */}

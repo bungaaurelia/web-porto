@@ -34,7 +34,6 @@ export default function Journey() {
     <div className="relative min-h-screen bg-darkGreen text-white overflow-hidden">
       <WeaponBackground />
       <div className="min-h-screen bg-darkGreen text-white px-4 sm:px-6 py-8 sm:py-12 space-y-24 sm:space-y-36">
-
         <div className="flex flex-col items-center mt-2 gap-6 px-4">
           <section className="p-0 mb-24">
             <h1
@@ -56,7 +55,7 @@ export default function Journey() {
             {journey.map((step, index) => (
               <motion.div
                 key={step.id}
-                className="group cursor-pointer relative pl-12 sm:pl-16 pr-4 py-6 sm:py-8 mb-14 border-2 border-cyan-300/40 rounded-2xl bg-gradient-to-br from-cyan-200/10 via-white/5 to-black/20 shadow-[0_0_20px_rgba(255,192,203,0.2)] hover:shadow-pink-300/40 transition-all duration-300 backdrop-blur-lg"
+                className="group relative pl-12 sm:pl-16 pr-4 py-6 sm:py-8 mb-14 border-2 border-cyan-300/40 rounded-2xl bg-gradient-to-br from-cyan-200/10 via-white/5 to-black/20 shadow-[0_0_20px_rgba(255,192,203,0.2)] hover:shadow-pink-300/40 transition-all duration-300 backdrop-blur-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.15 }}
@@ -67,7 +66,6 @@ export default function Journey() {
                 {/* Content */}
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 mt-5 text-center sm:text-left">
-
                   <span
                     className="absolute top-2 right-5 bg-yellow-400 text-black text-xs px-2 py-0.5 rounded-sm shadow-md mt-5"
                     style={{ fontFamily: "'Press Start 2P', cursive" }}
@@ -76,11 +74,10 @@ export default function Journey() {
                   </span>
                   {step.image_url && (
                     <img
-  src={step.image_url}
-  alt=""
-  className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded shadow-inner border border-white/10 bg-black/20 p-1"
-/>
-
+                      src={step.image_url}
+                      alt=""
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded shadow-inner border border-white/10 bg-black/20 p-1"
+                    />
                   )}
                   <div>
                     <h3 className="text-lg font-pixel text-white tracking-wide">
@@ -137,8 +134,7 @@ export default function Journey() {
                   <span className="text-xs text-white/50 italic">
                     {active.year}
                   </span>
-                  <div className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed whitespace-pre-line">
-
+                  <div className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed whitespace-pre-line text-justify">
                     {active.content}
                   </div>
                   <button
@@ -153,7 +149,7 @@ export default function Journey() {
           </AnimatePresence>
         </div>
       </div>
-          <TreasureRun />
+      <TreasureRun />
     </div>
   );
 }

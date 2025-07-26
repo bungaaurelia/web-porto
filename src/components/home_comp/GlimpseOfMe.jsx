@@ -32,11 +32,10 @@ const GlimpseOfMe = () => {
         {/* Right: Text */}
         <div className="w-full md:w-2/2 flex flex-col justify-center space-y-4 text-center md:text-left mt-6 py-4 md:mt-0 md:pl-20">
           <p className="text-md leading-relaxed mb-6">
-            I’m Bunga - a developer who loves to think and learn about anything,
-            especially in the world of technology. Besides writing code, I also
-            enjoy writing, reading, and exploring beautiful lines of story in
-            fantasy. This portfolio gonna be a living archive of my favorite
-            things, thoughts, journey and creations of mine.
+            I’m Bunga - a developer who loves to think and learn about anything. 
+            Besides writing code, I also enjoy writing, and reading beautiful lines of story.
+            This portfolio gonna be a living archive of my favorite
+            things, thoughts, journey and creations.
           </p>
 
           <ul className="text-md space-y-1">
@@ -44,7 +43,7 @@ const GlimpseOfMe = () => {
               👩‍💻 Love learn languages, not just programming languages but also
               human languages.{" "}
             </li>
-            <li>📔 I'm drawn to fantasy novels from around the world.</li>
+            <li>📔 Drawn to fantasy novels from around the world.</li>
             <li>🎧 Enjoy various types of music!</li>
           </ul>
           <br /><br />

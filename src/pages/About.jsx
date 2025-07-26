@@ -65,6 +65,12 @@ export default function About() {
                   >
                     Lv.{index + 1}
                   </span>
+                  <span
+                    className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-sm shadow-md inline-block mb-2 float-right"
+                    style={{ fontFamily: "'Press Start 2P', cursive" }}
+                  >
+                    {section.title}
+                  </span>
                   <p className="text-sm sm:text-base text-gray-300 leading-relaxed tracking-wide text-left sm:text-justify">
                     {section.content}
                   </p>
