@@ -9,7 +9,7 @@ const SkillsGrid = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/skills");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/skills`);
         const data = await res.json();
         setSkills(data);
       } catch (err) {

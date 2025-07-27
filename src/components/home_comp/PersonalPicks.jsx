@@ -12,7 +12,7 @@ const PersonalPicks = () => {
   useEffect(() => {
     const fetchPicks = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/personal-picks");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/personal-picks`);
         const data = await res.json();
         setPicks(data);
       } catch (err) {

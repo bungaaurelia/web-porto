@@ -7,7 +7,7 @@ const SoftHighlights = () => {
   useEffect(() => {
     const fetchHighlights = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/projects");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/projects`);
         const data = await res.json();
         const shuffled = data.sort(() => Math.random() - 0.5);
         const randomThree = shuffled.slice(0, 3);

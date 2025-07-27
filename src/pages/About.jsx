@@ -10,7 +10,7 @@ export default function About() {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/about");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/about`);
         const data = await res.json();
         setAboutData(data);
       } catch (err) {

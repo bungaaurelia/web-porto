@@ -14,7 +14,7 @@ export default function Contact() {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/contact");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/contact`);
         const data = await res.json();
         setContacts(data);
       } catch (err) {
@@ -30,7 +30,7 @@ export default function Contact() {
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/request-resume", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/request-resume`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
